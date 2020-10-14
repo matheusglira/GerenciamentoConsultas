@@ -1,0 +1,34 @@
+﻿@model IEnumerable<GerenciamentoConsultas.Models.MarcarConsulta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Consultas Marcadas</h2>
+
+<p>
+    @Html.ActionLink("Marcar nova Consulta", "Create", "MarcarConsultas", new { @class="btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Protocolo)</th>
+        <th>@Html.DisplayNameFor(model => model.Paciente.NomePaciente)</th>
+        <th>@Html.DisplayNameFor(model => model.TipoExame.NmTipoExame) </th>
+        <th>@Html.DisplayNameFor(model => model.DataConsulta)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Protocolo)</td>
+            <td>@Html.DisplayFor(modelItem => item.Paciente.NomePaciente)</td>
+            <td>@Html.DisplayFor(modelItem => item.TipoExame.NmTipoExame)</td>
+            <td>@Html.DisplayFor(modelItem => item.DataConsulta)</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Protocolo }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Protocolo })
+            </td>
+        </tr>
+    }
+</table>

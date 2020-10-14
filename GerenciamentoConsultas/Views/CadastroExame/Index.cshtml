@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GerenciamentoConsultas.Models.CadastroExame>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Exames</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar um novo exame", "Create", "CadastroExames", new { @class="btn btn-success"})
+</p>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.NomeExame) </th>
+        <th>@Html.DisplayNameFor(model => model.Observacao)</th>
+        <th>@Html.DisplayNameFor(model => model.TipoExame.NmTipoExame)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.NomeExame)</td>
+        <td>@Html.DisplayFor(modelItem => item.Observacao)</td>
+        <td>@Html.DisplayFor(modelItem => item.TipoExame.NmTipoExame)</td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.CadastroExameId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.CadastroExameId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id = item.CadastroExameId })
+        </td>
+    </tr>
+    }
+</table>

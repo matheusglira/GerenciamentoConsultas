@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GerenciamentoConsultas.Models.Paciente>
+
+@{
+    ViewBag.Title = "Lista de Pacientes";
+}
+
+<h2>Lista de Pacientes</h2>
+
+<p>
+    @Html.ActionLink("Novo Paciente", "Create", "Pacientes", new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.NomePaciente)</th>
+        <th>@Html.DisplayNameFor(model => model.Cpf) </th>
+        <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+        <th>@Html.DisplayNameFor(model => model.Sexo)</th>
+        <th>@Html.DisplayNameFor(model => model.Telefone)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.NomePaciente)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
+            <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
+            <td>@Html.DisplayFor(modelItem => item.Telefone)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>
+                @Html.ActionLink("Editar", "EditPaciente", new { id = item.PacienteId }) |
+                @Html.ActionLink("Detalhes", "DetailsPaciente", new { id = item.PacienteId }) |
+                @Html.ActionLink("Deletar", "DeletePaciente", new { id = item.PacienteId })
+            </td>
+        </tr>
+    }
+</table>
